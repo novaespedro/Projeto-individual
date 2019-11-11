@@ -1,11 +1,24 @@
-var fundo = document.getElementById("modal");
-    var bto =  document.getElementById("botaoLogin");
-    var fechar = document.getElementById("close");
+function validarLog(){
+    var email = formeLog.email.value;
+    var senha = formeLog.senha.value;
 
-    bto.onclick = function(){
-        fundo.style.display = "block";
+
+    if(email == "" || email.indexOf ('@') == -1 ){
+        alert('Preencha o campo email corretamente');
+        formeLog.email.focus();
+        return false;
     }
 
-    fechar.onclick = function(){
-        fundo.style.display = "none"
+    if(senha == "" ){
+        alert('Preencha o campo senha');
+        formeLog.senha.focus();
+        return false;
     }
+
+    // if(senha.lenght < 8){
+    //     alert('Senha Inválida');
+    //     formeLog.senha.focus();
+    //     return false;
+    // }
+    
+}

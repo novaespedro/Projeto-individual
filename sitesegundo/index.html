@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="../sitesegundo/css/index.css">
     
     <script type="text/javascript" src="../sitesegundo/js/cadastrar.js"></script>
+    <script type="text/javascript" src="../sitesegundo/js/login.js"></script>
     
     <title>teste</title>
 </head>
@@ -22,16 +23,19 @@
         <!-- Começo Logini -->
          <Div id="modal" class="estiloModal">
             <div class="conteudoModal">
-                <div class="posicaoModal">
-                    <div>
-                        Email<input type="email" class="email">
-                    </div>
-                    <div>
-                        Senha<input type="password" class="senha">
-                    </div><br>
-
-                    <button  id="close" class="fecharlog">Fechar</button>
-                </div>
+                
+                <form name="formeLog" action="envie.php" method="POST" class="posicaoModal">
+                    <label for="">Email</label>
+                    <input type="email" class="email" name="email">
+                    
+                    <label for="">Senha</label>
+                    <input type="password" class="senha" name="senha"> 
+                        
+                    <input type="submit" onclick="return validarLog()" >
+                    
+                </form>
+                <button  id="close" class="fecharlog">X</button>
+            
             </div>
          </Div>
          <!-- Final Logini -->
@@ -40,10 +44,17 @@
             <div class="conteudoMolde">
                 
                 <form name="formuser" action="enviar.php" method="POST" class="posicaoMolde">
-                    <label for="">Nome            <input  class="Nome"                name="nome"></label> <!--Require  type="text"-->
-                    <label for="">E-mail          <input  class="cad"                 name="email"></label> <!--Require  type="email" -->
-                    <label for="">Senha           <input  type="password" class="cad" name="senhaUm"></label><!--Require type="password" -->
-                    <label for="">Confirmar senha <input  type="password" class="cad" name="senhaDois"></label><!--Require type="password"-->
+                    <label for="">Nome</label>            
+                    <input  class="Nome"                name="nome"> <!--Require  type="text"-->
+                    
+                    <label for="">E-mail</label>           
+                    <input  class="cad"                 name="email"><!--Require  type="email" -->
+                    
+                    <label for="">Senha</label>           
+                    <input  type="password" class="cad" name="senhaUm"><!--Require type="password" -->
+                    
+                    <label for="">Confirmar senha</label> 
+                    <input  type="password" class="cad" name="senhaDois"><!--Require type="password"-->
                     
                     <input type="submit" onclick="return validar()">
     

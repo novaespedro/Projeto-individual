@@ -7,7 +7,7 @@ function validar(){
 
 
     if(nome == ""  && email == "" && senhaUm == "" && senhaUm == "" ){
-        alert('Os campos devem entas preenchidos');
+        alert('Os campos devem estar preenchidos');
         formuser.nome.focus();
         return false;
     }
