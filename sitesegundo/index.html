@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="../sitesegundo/css/index.css">
+    
+    <script type="text/javascript" src="../sitesegundo/js/cadastrar.js"></script>
+    
+    <title>teste</title>
+</head>
+<body>
+    <!-- começo da nave -->
+     <nav class="principal">
+         <img class="logotipo"src="../sitesegundo/imagens/investcalculator.png"alt="">
+         <ul class="opcoes">
+            <li class="cadastro"><button id="botaoCadastro">cadastrar</button></li>
+            <li class="barra">|</li>
+            <li class="login"><button id="botaoLogin">Login</button></li>
+         </ul>
+        <!-- Começo Logini -->
+         <Div id="modal" class="estiloModal">
+            <div class="conteudoModal">
+                <div class="posicaoModal">
+                    <div>
+                        Email<input type="email" class="email">
+                    </div>
+                    <div>
+                        Senha<input type="password" class="senha">
+                    </div><br>
+
+                    <button  id="close" class="fecharlog">Fechar</button>
+                </div>
+            </div>
+         </Div>
+         <!-- Final Logini -->
+         <!-- Começo Cadastro -->
+         <Div class="moldeCad" id="molde">
+            <div class="conteudoMolde">
+                
+                <form name="formuser" action="enviar.php" method="POST" class="posicaoMolde">
+                    <label for="">Nome            <input  class="Nome"                name="nome"></label> <!--Require  type="text"-->
+                    <label for="">E-mail          <input  class="cad"                 name="email"></label> <!--Require  type="email" -->
+                    <label for="">Senha           <input  type="password" class="cad" name="senhaUm"></label><!--Require type="password" -->
+                    <label for="">Confirmar senha <input  type="password" class="cad" name="senhaDois"></label><!--Require type="password"-->
+                    
+                    <input type="submit" onclick="return validar()">
+    
+                    
+                </form>
+                <button id="closeCad" class="fecharCad">x</button>
+            </div>
+         </Div>
+         <!-- Final Cadastro -->
+        
+     </nav>
+  
+
+     <!-- final da nave -->
+
+     <Div class="conteudo">
+         <h2 class="tesouro">Tesouro direto</h2>
+        <div class="contexto">
+                <h2>O que é?</h2>
+             <div class = "texto"> 
+                <label>
+                        Considerado a porta de entrada para o mundo dos investimentos,
+                        no Tesouro Direto você investe com pouco dinheiro e com o menor risco entre as aplicações do mercado.
+                        Ideal para quem quer começar a investir.<br><br>
+                </label>
+            </div>
+            <div class="texto2"> 
+                <label>
+                        Como funciona o Tesouro Direto?<br>
+                        Investir no Tesouro Direto é uma maneira acessível 
+                        para fazer seu dinheiro render mais. 
+                        Nele você investe em títulos públicos com rentabilidade variável
+                        dependendo do tipo de tesouro escolhido.
+                        <b style="color: rgb(88, 90, 94);">Simule um investimento abaixo    </b>
+                </label>
+            </div>  
+        </div>
+     </Div>
+
+     <Div class="MoldeCalculadora">
+        <div class="fundocalcule">
+
+            <label>Receita disponível</label><br>
+                <input type="text" id="receita_disponivel"><br>
+
+            <label>Tempo (mês)</label><br>
+                <input type="text" id="tempo_investir"><br>
+
+            <label>Tx. Rendimento (Ano)</label><br>
+                <input type="text" id="taxa_rendimento"><br>
+
+            <button onclick="simular()" class="simulador">Simular</button>
+            
+        </div>
+        <img class="igualdade" src="../sitesegundo/imagens/igualdade.png" alt="">
+        <!-- começo mensagem do simulador -->
+        <div class="fundomensagem">
+            
+            <span class = "dinheiro">Rendimento bruto R$:</span>
+            <div class="resultado" id="resultado"></div>
+            <span class="liquido" >Rendimento líquido R$:</span>
+            <div class = "liquidoResult" id="resultadoLiquido"></div>
+             <!--Resultado da conta-->
+        </div>
+        <!-- Final mensagem do simulador -->
+     </Div>
+
+     <Div class="conteudo2">
+        
+     </Div>
+</body>
+</html>
+
+<script>
+    // começo login
+    var fundo = document.getElementById("modal");
+    var bto =  document.getElementById("botaoLogin");
+    var fechar = document.getElementById("close");
+
+    bto.onclick = function(){
+        fundo.style.display = "block";
+    }
+
+    fechar.onclick = function(){
+        fundo.style.display = "none"
+    }
+    //Final Login
+
+    //Começo cadastro
+    var fundocad = document.getElementById("molde");
+    var btocad = document.getElementById("botaoCadastro");
+    var fecharcad = document.getElementById ("closeCad") ;
+
+    btocad.onclick = function(){
+        fundocad.style.display = "block";
+    }
+    fecharcad.onclick = function(){
+        fundocad.style.display = "none"
+    }
+    //Final Cadastro
+
+    //Começo Calculadora
+        function simular(){
+            var receita = Number(receita_disponivel.value);
+            var tempo   = Number(tempo_investir.value);
+            var taxa    = (Number(taxa_rendimento.value)/100)/12;
+            var juros = receita * (1 + taxa)**tempo;
+          
+            resultado.innerHTML = `${juros.toFixed(2)}`;
+
+          // aqui estou tentano descontar juros
+            var rendimento = juros - receita;
+
+            var imposto22 = rendimento * 0.22;
+            var liquido22 = juros - imposto22;
+
+            var imposto20 = rendimento * 0.2;
+            var liquido20 = juros - imposto20;
+
+            var imposto17 = rendimento * 0.175;
+            var liquido17 = juros - imposto17
+
+            var imposto15 = rendimento * 0.15;
+            var liquido15 = juros - imposto15; 
+           // descontar juros
+
+          
+            
+            if(tempo > 24){
+                resultadoLiquido.innerHTML = `${liquido15.toFixed(2)}`;
+            }else if(tempo <= 6){
+                resultadoLiquido.innerHTML = `${liquido22.toFixed(2)}`
+            }else if( tempo <= 12){
+                resultadoLiquido.innerHTML = `${liquido20.toFixed(2)}`
+            }else{
+                resultadoLiquido.innerHTML = `${liquido17.toFixed(2)}`
+            }
+        }   
+        
+    //Final Calculadora
+</script>
+
+
