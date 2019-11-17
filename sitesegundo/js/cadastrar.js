@@ -13,7 +13,7 @@ function validar(){
     }
 
 
-    if(nome == "" || nome.lenght < 8){
+    if(nome == "" || nome.length < 8){
         alert('Preencha o campo nome com no minímo 8 caracteres');
         formuser.nome.focus();
         return false;
